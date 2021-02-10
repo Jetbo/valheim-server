@@ -12,5 +12,3 @@ SERVER_NAME        # Sets the server name (string)
 SERVER_PUBLIC      # Sets if the server is public or not (0, 1)
 SERVER_WORLD_NAME  # Sets the world name (string)
 ```
-
-Run it with `docker-compose run --service-ports vhserver`. The server will boot up @ 0.0.0.0 on the container. The ports will be mapped to your machine's network IP.

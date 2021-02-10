@@ -22,7 +22,7 @@ sed -i "s/gameworld=.*/gameworld=\"$SERVER_WORLD_NAME\"/" /home/linuxgsm/vhserve
 cp /home/linuxgsm/vhserver.cfg /home/linuxgsm/gsm/lgsm/config-lgsm/vhserver/vhserver.cfg;
 
 # Start server
-/home/linuxgsm/gsm/vhserver start
+/home/linuxgsm/gsm/vhserver start;
 
-# Go back to bash
-/bin/bash
+# Keep the execution context open
+tail -f /home/linuxgsm/gsm/log/console/vhserver-console.log;
