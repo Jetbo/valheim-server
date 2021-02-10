@@ -5,12 +5,14 @@
 : "${SERVER_NAME?Need to set SERVER_NAME}";
 : "${SERVER_PUBLIC?Need to set SERVER_PUBLIC}";
 : "${SERVER_WORLD_NAME?Need to set SERVER_WORLD_NAME}";
+: "${HEALTH_CHECK_PORT?Need to set HEALTH_CHECK_PORT}";
 
 # Output settings (but not password obviously)
 echo "Servername is set to: $SERVER_NAME";
 echo "Public is set to: $SERVER_PUBLIC";
 echo "Worldname is set to: $SERVER_WORLD_NAME";
 echo "Password will not be displayed";
+echo "Health checks can be performed on port $HEALTH_CHECK_PORT";
 
 # Set values with sed
 sed -i "s/servername=.*/servername=\"$SERVER_NAME\"/" /home/linuxgsm/vhserver.cfg;
@@ -23,6 +25,9 @@ cp /home/linuxgsm/vhserver.cfg /home/linuxgsm/gsm/lgsm/config-lgsm/vhserver/vhse
 
 # Start server
 /home/linuxgsm/gsm/vhserver start;
+
+# Simple health check service
+python3 -m http.server -d /home/linuxgsm/healthcheck/ $HEALTH_CHECK_PORT > /dev/null 2>&1 &
 
 # Keep the execution context open
 tail -f /home/linuxgsm/gsm/log/console/vhserver-console.log;

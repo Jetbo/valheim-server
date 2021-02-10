@@ -9,6 +9,7 @@ services:
       - 2457:2457/udp
       - 27015:27015/tcp
       - 27015:27015/udp
+      - 8080:8080 # make sure this matches your HEALTH_CHECK_PORT ENV
     volumes:
       - server-volume:/home/linuxgsm/gsm
     # Customize these!
@@ -17,6 +18,7 @@ services:
       - SERVER_NAME=Test Server
       - SERVER_PUBLIC=0
       - SERVER_WORLD_NAME=TestWorld
+      - HEALTH_CHECK_PORT=8080
 
 volumes:
   server-volume:

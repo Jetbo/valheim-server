@@ -22,6 +22,8 @@ EXPOSE 2456/udp
 EXPOSE 2457/udp
 # Steam ports
 EXPOSE 27015/tcp 27015/udp
+# Health check
+EXPOSE 8080
 
 # Copy custom config
 COPY --chown=linuxgsm:linuxgsm scripts/vhserver.cfg /home/linuxgsm/vhserver.cfg
@@ -29,6 +31,10 @@ COPY --chown=linuxgsm:linuxgsm scripts/vhserver.cfg /home/linuxgsm/vhserver.cfg
 # Copy script
 COPY --chown=linuxgsm:linuxgsm scripts/load_config.sh /home/linuxgsm/load_config.sh
 RUN chmod +x /home/linuxgsm/load_config.sh
+
+# Copy simple-server (health checks)
+RUN mkdir -p /home/linuxgsm/healthcheck
+COPY healthcheck/ping.html /home/linuxgsm/healthcheck/ping.html
 
 # Config must be loaded AFTER any volumes
 ENTRYPOINT []

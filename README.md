@@ -11,4 +11,5 @@ SERVER_PASSWORD    # Sets the server password (string)
 SERVER_NAME        # Sets the server name (string)
 SERVER_PUBLIC      # Sets if the server is public or not (0, 1)
 SERVER_WORLD_NAME  # Sets the world name (string)
+HEALTH_CHECK_PORT  # Sets the health check port (int)
 ```
