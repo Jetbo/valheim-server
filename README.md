@@ -1,4 +1,16 @@
 # valheim-server
-Simple docker setup for valheim server
 
-Usage is `docker-compose up --build`
+Simple docker setup for a valheim server running on LinuxGSM.
+
+Build the app with `docker-compose up --build`.
+
+You can change the ENVs in the docker-compose. ENVs control the basic server config.
+
+```
+SERVER_PASSWORD    # Sets the server password (string)
+SERVER_NAME        # Sets the server name (string)
+SERVER_PUBLIC      # Sets if the server is public or not (0, 1)
+SERVER_WORLD_NAME  # Sets the world name (string)
+```
+
+Run it with `docker-compose run --service-ports vhserver`. The server will boot up @ 0.0.0.0 on the container. The ports will be mapped to your machine's network IP.

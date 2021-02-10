@@ -4,16 +4,19 @@ services:
   vhserver:
     container_name: vhserver
     build: .
-    # stdin_open: true
-    # tty: true
     ports:
-      - 2456:2456
-      - 2457:2457
+      - 2456:2456/udp
+      - 2457:2457/udp
       - 27015:27015/tcp
       - 27015:27015/udp
     volumes:
-      - server-volume:/home/linuxgsm
-    entrypoint: bash
+      - server-volume:/home/linuxgsm/gsm
+    # Customize these!
+    environment:
+      - SERVER_PASSWORD=test1234
+      - SERVER_NAME=Test Server
+      - SERVER_PUBLIC=0
+      - SERVER_WORLD_NAME=TestWorld
 
 volumes:
   server-volume:
