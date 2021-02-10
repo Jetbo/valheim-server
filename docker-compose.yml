@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  vhserver:
+    container_name: vhserver
+    build: .
+    # stdin_open: true
+    # tty: true
+    ports:
+      - 2456:2456
+      - 2457:2457
+      - 27015:27015/tcp
+      - 27015:27015/udp
+    volumes:
+      - server-volume:/home/linuxgsm
+    entrypoint: bash
+
+volumes:
+  server-volume:
