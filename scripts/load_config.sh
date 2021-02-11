@@ -29,5 +29,8 @@ cp /home/linuxgsm/gsm/vhserver.cfg /home/linuxgsm/gsm/lgsm/config-lgsm/vhserver/
 # Start simple health check service
 python3 -m http.server -d /home/linuxgsm/healthcheck/ $HEALTH_CHECK_PORT > /dev/null 2>&1 &
 
+# Add a blank log so we can tail the initial setup
+touch /home/linuxgsm/gsm/log/console/vhserver-console.log
+
 # Keep the execution context open
 tail -f /home/linuxgsm/gsm/log/console/vhserver-console.log;
