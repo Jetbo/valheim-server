@@ -9,7 +9,7 @@ USER linuxgsm
 
 # Move linuxgsm files to help with volume setup
 RUN mkdir -p /home/linuxgsm/gsm
-RUN mv -n /home/linuxgsm/linuxgsm.sh /home/linuxgsm/gsm/linuxgsm.sh
+RUN cp /home/linuxgsm/linuxgsm.sh /home/linuxgsm/gsm/linuxgsm.sh
 WORKDIR /home/linuxgsm/gsm
 
 # Install vhserver
