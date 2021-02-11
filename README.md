@@ -13,3 +13,15 @@ SERVER_PUBLIC      # Sets if the server is public or not (0, 1)
 SERVER_WORLD_NAME  # Sets the world name (string)
 HEALTH_CHECK_PORT  # Sets the health check port (int)
 ```
+
+## Useful file locations
+
+```
+# Holds the Valheim world files and server user lists (admins, bans, etc)
+# This directory is setup as a volume to remain persistent
+/home/linuxgsm/gsm/.config/unity3d/IronGate/Valheim/
+
+# GSM and game logs
+# This directory is setup as a volume to remain persistent
+/home/linuxgsm/gsm/log/
+```

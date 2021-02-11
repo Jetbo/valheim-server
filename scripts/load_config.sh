@@ -11,22 +11,22 @@
 echo "Servername is set to: $SERVER_NAME";
 echo "Public is set to: $SERVER_PUBLIC";
 echo "Worldname is set to: $SERVER_WORLD_NAME";
-echo "Password will not be displayed";
 echo "Health checks can be performed on port $HEALTH_CHECK_PORT";
+echo "Password will not be displayed";
 
 # Set values with sed
-sed -i "s/servername=.*/servername=\"$SERVER_NAME\"/" /home/linuxgsm/vhserver.cfg;
-sed -i "s/public=.*/public=\"$SERVER_PUBLIC\"/" /home/linuxgsm/vhserver.cfg;
-sed -i "s/serverpassword=.*/serverpassword=\"$SERVER_PASSWORD\"/" /home/linuxgsm/vhserver.cfg;
-sed -i "s/gameworld=.*/gameworld=\"$SERVER_WORLD_NAME\"/" /home/linuxgsm/vhserver.cfg;
+sed -i "s/servername=.*/servername=\"$SERVER_NAME\"/" /home/linuxgsm/gsm/vhserver.cfg;
+sed -i "s/public=.*/public=\"$SERVER_PUBLIC\"/" /home/linuxgsm/gsm/vhserver.cfg;
+sed -i "s/serverpassword=.*/serverpassword=\"$SERVER_PASSWORD\"/" /home/linuxgsm/gsm/vhserver.cfg;
+sed -i "s/gameworld=.*/gameworld=\"$SERVER_WORLD_NAME\"/" /home/linuxgsm/gsm/vhserver.cfg;
 
 # Replace config
-cp /home/linuxgsm/vhserver.cfg /home/linuxgsm/gsm/lgsm/config-lgsm/vhserver/vhserver.cfg;
+cp /home/linuxgsm/gsm/vhserver.cfg /home/linuxgsm/gsm/lgsm/config-lgsm/vhserver/vhserver.cfg;
 
 # Start server
 /home/linuxgsm/gsm/vhserver start;
 
-# Simple health check service
+# Start simple health check service
 python3 -m http.server -d /home/linuxgsm/healthcheck/ $HEALTH_CHECK_PORT > /dev/null 2>&1 &
 
 # Keep the execution context open
