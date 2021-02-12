@@ -16,10 +16,8 @@ WORKDIR /home/linuxgsm/gsm
 RUN bash linuxgsm.sh vhserver
 RUN ./vhserver auto-install
 
-# Game port
-EXPOSE 2456/udp
-# LinuxGSM port
-EXPOSE 2457/udp
+# Game ports
+EXPOSE 2456/udp 2457/udp 2458/udp
 # Steam ports
 EXPOSE 27015/tcp 27015/udp
 # Health check
@@ -35,6 +33,11 @@ RUN chmod +x /home/linuxgsm/gsm/load_config.sh
 # Copy simple server health checks
 RUN mkdir -p /home/linuxgsm/healthcheck
 COPY healthcheck/ping.html /home/linuxgsm/healthcheck/ping.html
+
+# Create simple volume folders
+RUN mkdir -p /home/linuxgsm/gsm/log \
+  /home/linuxgsm/.local/share/Steam/logs \
+  /home/linuxgsm/.config/unity3d/IronGate/Valheim
 
 # Config must be loaded AFTER any volumes
 ENTRYPOINT []

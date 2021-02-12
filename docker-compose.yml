@@ -7,13 +7,14 @@ services:
     ports:
       - 2456:2456/udp
       - 2457:2457/udp
+      - 2458:2458/udp
       - 27015:27015/tcp
       - 27015:27015/udp
       - 8080:8080 # make sure this matches your HEALTH_CHECK_PORT ENV
     volumes:
       - gsm-log-volume:/home/linuxgsm/gsm/log
       - steam-log-volume:/home/linuxgsm/.local/share/Steam/logs
-      - valheim-server-volume:/home/linuxgsm/gsm/.config/unity3d/IronGate/Valheim
+      - valheim-server-volume:/home/linuxgsm/.config/unity3d/IronGate/Valheim
     # Customize these!
     environment:
       - SERVER_PASSWORD=test1234
