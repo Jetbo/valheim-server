@@ -1,0 +1,2 @@
+# Daily reboot to ensure the world gets written to EFS
+* * * * * bash /home/linuxgsm/gsm/daily-reboot.sh
