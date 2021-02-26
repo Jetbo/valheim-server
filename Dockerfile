@@ -17,7 +17,7 @@ RUN bash linuxgsm.sh vhserver
 RUN ./vhserver auto-install
 
 # Game ports
-EXPOSE 2456/udp 2457/udp 2458/udp
+EXPOSE 2456/udp 2457/udp 2458/udp 2459/udp
 # Steam ports
 EXPOSE 27015/tcp 27015/udp
 # Health check
