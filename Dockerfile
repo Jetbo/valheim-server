@@ -41,5 +41,5 @@ RUN mkdir -p /home/linuxgsm/gsm/log \
   /home/linuxgsm/.config/unity3d/IronGate/Valheim
 
 # Config must be loaded AFTER any volumes
-ENTRYPOINT []
-CMD [ "/home/linuxgsm/gsm/load_config.sh" ]
+ENTRYPOINT [ "/home/linuxgsm/gsm/load_config.sh" ]
+CMD []
