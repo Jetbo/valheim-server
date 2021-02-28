@@ -22,6 +22,7 @@ services:
       - SERVER_PUBLIC=0
       - SERVER_WORLD_NAME=TestWorld
       - HEALTH_CHECK_PORT=8080
+      - ENABLE_CLEAN_SHUTDOWN=1
 
 volumes:
   gsm-log-volume:

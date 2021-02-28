@@ -6,6 +6,7 @@
 : "${SERVER_PUBLIC?Need to set SERVER_PUBLIC}";
 : "${SERVER_WORLD_NAME?Need to set SERVER_WORLD_NAME}";
 : "${HEALTH_CHECK_PORT?Need to set HEALTH_CHECK_PORT}";
+: "${ENABLE_CLEAN_SHUTDOWN?Need to set ENABLE_CLEAN_SHUTDOWN}";
 
 # Output settings (but not password obviously)
 echo "Servername is set to: $SERVER_NAME";
@@ -25,6 +26,12 @@ cp /home/linuxgsm/gsm/vhserver.cfg /home/linuxgsm/gsm/lgsm/config-lgsm/vhserver/
 
 # Start server
 /home/linuxgsm/gsm/vhserver start;
+
+# Shutdown script
+if [ "$ENABLE_CLEAN_SHUTDOWN" = "1" ]
+then
+  /home/linuxgsm/gsm/clean_shutdown.shutdown
+fi
 
 # Start simple health check service
 python3 -m http.server -d /home/linuxgsm/healthcheck/ $HEALTH_CHECK_PORT > /dev/null 2>&1 &

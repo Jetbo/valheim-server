@@ -26,9 +26,10 @@ EXPOSE 8080
 # Copy custom config
 COPY --chown=linuxgsm:linuxgsm scripts/vhserver.cfg /home/linuxgsm/gsm/vhserver.cfg
 
-# Copy script
+# Copy scripts
 COPY --chown=linuxgsm:linuxgsm scripts/load_config.sh /home/linuxgsm/gsm/load_config.sh
-RUN chmod +x /home/linuxgsm/gsm/load_config.sh
+COPY --chown=linuxgsm:linuxgsm scripts/clean_shutdown.sh /home/linuxgsm/gsm/clean_shutdown.sh
+RUN chmod +x /home/linuxgsm/gsm/load_config.sh /home/linuxgsm/gsm/clean_shutdown.sh
 
 # Copy simple server health checks
 RUN mkdir -p /home/linuxgsm/healthcheck
