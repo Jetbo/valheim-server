@@ -1,20 +1,15 @@
-FROM jetbo/linux-gsm-docker:latest
-
-# fixes SDL error
-USER root
-RUN apt-get install -y libsdl2-2.0-0
+FROM gameservermanagers/linuxgsm-docker:latest
 
 # Run server on linuxgsm user
 USER linuxgsm
 
 # Move linuxgsm files to help with volume setup
-RUN mkdir -p /home/linuxgsm/gsm
-RUN cp /home/linuxgsm/linuxgsm.sh /home/linuxgsm/gsm/linuxgsm.sh
+RUN mkdir -p /home/linuxgsm/gsm && \
+  cp /linuxgsm.sh /home/linuxgsm/gsm/linuxgsm.sh
 WORKDIR /home/linuxgsm/gsm
 
 # Install vhserver
-RUN bash linuxgsm.sh vhserver
-RUN ./vhserver auto-install
+RUN bash linuxgsm.sh vhserver && ./vhserver auto-install
 
 # Game ports
 EXPOSE 2456/udp 2457/udp 2458/udp 2459/udp
